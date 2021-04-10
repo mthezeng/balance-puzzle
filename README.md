@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The code for the draggable lists was based on [this tutorial](https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/) from Free Code Camp.
 
+The functionality for multiple draggable lists is based on the example code [here](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/examples.md).
+
 ## Available Scripts
 
 In the project directory, you can run:

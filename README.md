@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The code for the draggable lists was based on [this tutorial](https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/) from Free Code Camp.
+
 ## Available Scripts
 
 In the project directory, you can run:

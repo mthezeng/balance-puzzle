@@ -3,55 +3,42 @@
   padding-top: 3rem;
 }
 
-/*.App-starting-blocks {
+.balanceScale {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 1.5vmin);
-}*/
-
-.leftBlocks {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding: grid;
-  overflow: auto;
-  border: solid 2px #d0d0d0;
-  border-radius: .2em;
-  align-items: left;
 }
 
-.rightBlocks {
+.scaleBlocks {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  padding: grid;
+  flex-direction: row;
+  padding: 25px;
   overflow: auto;
   border: solid 2px #d0d0d0;
   border-radius: .2em;
-  align-items: right;
+  /*width: 200px;*/
+  flex: 1;
 }
 
 .blocks {
   list-style: none;
   display: flex;
-  padding: grid;
+  padding: 10px;
   overflow: auto;
   border: solid 2px #d0d0d0;
   border-radius: .2em;
+  margin-top: 1em;
 }
 
-.blocks li {
+.App li {
   display: flex;
   align-items: center;
   border: solid 2px #d0d0d0;
   border-radius: .2em;
-  padding: .5em .8em .5em .5em;
+  padding: .5em;
   margin-bottom: 1em;
 }
 
-.blocks p {
+.App p {
   max-width: none;
   font-weight: bold;
   margin: 0;

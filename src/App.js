@@ -1,5 +1,5 @@
 import './App.css';
-// import { Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {useState} from 'react';
 
@@ -68,42 +68,48 @@ function App() {
   return (
     <div className="App">
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId="leftBlocks" direction="horizontal">
-          {(provided) => (
-            <ul className="blocks" {...provided.droppableProps} ref={provided.innerRef}>
-            {leftBlocks.map(({id, name}, index) => {
-              return (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {(provided) => (
-                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        <p> {name} </p>
-                      </li>
-                     )}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-        <Droppable droppableId="rightBlocks" direction="horizontal">
-          {(provided) => (
-            <ul className="blocks" {...provided.droppableProps} ref={provided.innerRef}>
-            {rightBlocks.map(({id, name}, index) => {
-              return (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {(provided) => (
-                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        <p> {name} </p>
-                      </li>
-                     )}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
+        <div className="balanceScale">
+          <Droppable droppableId="leftBlocks" direction="horizontal">
+            {(provided) => (
+              <ul className="scaleBlocks" {...provided.droppableProps} ref={provided.innerRef}>
+              {leftBlocks.map(({id, name}, index) => {
+                return (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <p> {name} </p>
+                        </li>
+                       )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+          <Droppable droppableId="rightBlocks" direction="horizontal">
+            {(provided) => (
+              <ul className="scaleBlocks" {...provided.droppableProps} ref={provided.innerRef}>
+              {rightBlocks.map(({id, name}, index) => {
+                return (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <p> {name} </p>
+                        </li>
+                       )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </div>
+
+        <Button color="primary">Weigh</Button>
+        <Button color="secondary">Reset</Button>
+
         <Droppable droppableId="blocks" direction="horizontal">
           {(provided) => (
             <ul className="blocks" {...provided.droppableProps} ref={provided.innerRef}>

@@ -24,31 +24,26 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-starting-blocks">
-        <p>
-          Blocks
-        </p>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="blocks">
-            {(provided) => (
-              <ul className="blocks" {...provided.droppableProps} ref={provided.innerRef}>
-              {blocks.map(({id, name}, index) => {
-                return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <p> {name} </p>
-                        </li>
-                       )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="blocks" direction="horizontal">
+          {(provided) => (
+            <ul className="blocks" {...provided.droppableProps} ref={provided.innerRef}>
+            {blocks.map(({id, name}, index) => {
+              return (
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {(provided) => (
+                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <p> {name} </p>
+                      </li>
+                     )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }

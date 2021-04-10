@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useState } from 'react';
 
+let attemptsRemaining = 3;
 let allBlocks = [];
 for (let i = 1; i <= 12; i++) {
   allBlocks.push({
@@ -93,6 +94,18 @@ function App() {
   }
 
   function weigh() {
+    if (attemptsRemaining >= 0) {
+      attemptsRemaining--;
+    }
+    let attemptString;
+    if (attemptsRemaining === 1) {
+      attemptString = "You have 1 weighing remaining.";
+    } else if (attemptsRemaining < 0) {
+      attemptString = "You have exceeded the amount of times you can use the balance scale."
+    } else {
+      attemptString = "You have " + attemptsRemaining + " weighings remaining."
+    }
+
     let leftWeight = 0;
     for (let i = 0; i < leftBlocks.length; i++) {
       leftWeight += leftBlocks[i].weight;
@@ -102,11 +115,11 @@ function App() {
       rightWeight += rightBlocks[i].weight;
     }
     if (leftWeight > rightWeight) {
-      updateLog("The left side is heavier than the right side.");
+      updateLog("The left side is heavier than the right side. " + attemptString);
     } else if (rightWeight > leftWeight) {
-      updateLog("The right side is heavier than the left side.");
+      updateLog("The right side is heavier than the left side. " + attemptString);
     } else {
-      updateLog("The two sides are balanced.")
+      updateLog("The two sides are balanced. " + attemptString);
     }
   }
 

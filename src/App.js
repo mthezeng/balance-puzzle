@@ -32,8 +32,8 @@ function generateBadBlock() {
 let badBlock = generateBadBlock();
 
 function updateLog(message) {
-  let node = document.createElement("LI");
-  let textNode = document.createTextNode(message);
+  const node = document.createElement("LI");
+  const textNode = document.createTextNode(message);
   node.appendChild(textNode);
   document.getElementById("log").appendChild(node);
 }
@@ -120,6 +120,18 @@ function App() {
     updateLog("The block with a different weight is " + badBlock + ".");
   }
 
+  function startOver() {
+    resetAllBlocks();
+    badBlock = generateBadBlock();
+    reset();
+
+    // clear the log
+    const logNode = document.getElementById("log");
+    while (logNode.lastElementChild) {
+      logNode.removeChild(logNode.lastElementChild);
+    }
+  }
+
   return (
     <div className="App">
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -165,6 +177,7 @@ function App() {
         <Button color="primary" onClick={weigh}>Weigh</Button>
         <Button color="secondary" onClick={reset}>Reset</Button>
         <Button color="warning" onClick={exposeAnswer}>Solution</Button>
+        <Button color="danger" onClick={startOver}>Start Over</Button>
 
         <Droppable droppableId="blocks" direction="horizontal">
           {(provided) => (

@@ -26,9 +26,10 @@ function generateBadBlock() {
   } else {
     allBlocks[badBlockId].weight = 10;
   }
+  return allBlocks[badBlockId].name;
 }
 
-generateBadBlock();
+let badBlock = generateBadBlock();
 
 function updateLog(message) {
   let node = document.createElement("LI");
@@ -109,6 +110,16 @@ function App() {
     }
   }
 
+  function reset() {
+    updateBlocks(allBlocks);
+    updateLeftBlocks([]);
+    updateRightBlocks([]);
+  }
+
+  function exposeAnswer() {
+    updateLog("The block with a different weight is " + badBlock + ".");
+  }
+
   return (
     <div className="App">
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -152,6 +163,8 @@ function App() {
         </div>
 
         <Button color="primary" onClick={weigh}>Weigh</Button>
+        <Button color="secondary" onClick={reset}>Reset</Button>
+        <Button color="warning" onClick={exposeAnswer}>Solution</Button>
 
         <Droppable droppableId="blocks" direction="horizontal">
           {(provided) => (

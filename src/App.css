@@ -12,21 +12,23 @@
   display: flex;
   flex-direction: row;
   padding: 25px;
-  overflow: auto;
+  /*overflow: auto;*/
   border: solid 2px #d0d0d0;
   border-radius: .2em;
   /*width: 200px;*/
   flex: 1;
+  flex-wrap: wrap;
 }
 
 .blocks {
   list-style: none;
   display: flex;
   padding: 10px;
-  overflow: auto;
+  /*overflow: auto;*/
   border: solid 2px #d0d0d0;
   border-radius: .2em;
   margin-top: 1em;
+  flex-wrap: wrap;
 }
 
 .App li {

@@ -137,6 +137,7 @@ function App() {
     resetAllBlocks();
     badBlock = generateBadBlock();
     reset();
+    attemptsRemaining = 3;
 
     // clear the log
     const logNode = document.getElementById("log");
@@ -188,8 +189,8 @@ function App() {
         </div>
 
         <Button color="primary" onClick={weigh}>Weigh</Button>
-        <Button color="secondary" onClick={reset}>Reset</Button>
-        <Button color="warning" onClick={exposeAnswer}>Solution</Button>
+        <Button color="secondary" onClick={reset}>Remove Blocks</Button>
+        <Button color="warning" onClick={exposeAnswer}>Show Solution</Button>
         <Button color="danger" onClick={startOver}>Start Over</Button>
 
         <Droppable droppableId="blocks" direction="horizontal">

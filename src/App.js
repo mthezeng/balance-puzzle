@@ -190,7 +190,7 @@ function App() {
 
         <Button color="primary" onClick={weigh}>Weigh</Button>
         <Button color="secondary" onClick={reset}>Remove Blocks</Button>
-        <Button color="warning" onClick={exposeAnswer}>Show Solution</Button>
+        <Button color="warning" onClick={exposeAnswer}>Reveal Block</Button>
         <Button color="danger" onClick={startOver}>Start Over</Button>
 
         <Droppable droppableId="blocks" direction="horizontal">

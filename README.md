@@ -6,6 +6,10 @@ The code for the draggable lists was based on [this tutorial](https://www.freeco
 
 The functionality for multiple draggable lists is based on the example code [here](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/examples.md).
 
+The Dockerization of this project is based on [this tutorial](https://mherman.org/blog/dockerizing-a-react-app/) by Michael Herman.
+
+For an explanation of this logic puzzle, see [this Wikipedia article](https://en.wikipedia.org/wiki/Balance_puzzle).
+
 ## Available Scripts
 
 In the project directory, you can run:

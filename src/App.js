@@ -1,14 +1,40 @@
 import './App.css';
 import { Button } from 'reactstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import {useState} from 'react';
+import { useState } from 'react';
 
 let allBlocks = [];
 for (let i = 1; i <= 12; i++) {
   allBlocks.push({
     id: 'block' + i,
-    name: 'Block ' + i
+    name: 'Block ' + i,
+    weight: 5
   });
+}
+
+function resetAllBlocks() {
+  for (let i = 0; i < allBlocks.length; i++) {
+    allBlocks[i].weight = 5;
+  }
+}
+
+function generateBadBlock() {
+  resetAllBlocks();
+  const badBlockId = Math.floor(Math.random() * 12);
+  if (Math.random() < 0.5) {
+    allBlocks[badBlockId].weight = 0;
+  } else {
+    allBlocks[badBlockId].weight = 10;
+  }
+}
+
+generateBadBlock();
+
+function updateLog(message) {
+  let node = document.createElement("LI");
+  let textNode = document.createTextNode(message);
+  node.appendChild(textNode);
+  document.getElementById("log").appendChild(node);
 }
 
 function App() {
@@ -65,6 +91,24 @@ function App() {
     return result;
   }
 
+  function weigh() {
+    let leftWeight = 0;
+    for (let i = 0; i < leftBlocks.length; i++) {
+      leftWeight += leftBlocks[i].weight;
+    }
+    let rightWeight = 0;
+    for (let i = 0; i < rightBlocks.length; i++) {
+      rightWeight += rightBlocks[i].weight;
+    }
+    if (leftWeight > rightWeight) {
+      updateLog("The left side is heavier than the right side.");
+    } else if (rightWeight > leftWeight) {
+      updateLog("The right side is heavier than the left side.");
+    } else {
+      updateLog("The two sides are balanced.")
+    }
+  }
+
   return (
     <div className="App">
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -107,8 +151,7 @@ function App() {
           </Droppable>
         </div>
 
-        <Button color="primary">Weigh</Button>
-        <Button color="secondary">Reset</Button>
+        <Button color="primary" onClick={weigh}>Weigh</Button>
 
         <Droppable droppableId="blocks" direction="horizontal">
           {(provided) => (
